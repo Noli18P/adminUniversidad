@@ -40,9 +40,14 @@ def actualizar_calificacion():
     opcion = int(input('Ingresa la cantidad de calificaciones que quieres actualizar: '))
 
     if opcion == 1:
-        materia = input('Ingresa el nombre de la materia: ').upper()
+        materia = input('Ingresa el nombre de la materia: ')
         calificacion = int(input('Ingresa tu calificacion: '))
         
+        if materia == 'español':
+            materia = 'ESPAÑOL'
+        else:
+            materia = materia.upper()
+
         sql = f"UPDATE ESTUDIANTES SET {materia} = {calificacion} WHERE NOMBRE_ESTUDIANTE='{nombre}'"
         pointer.execute(sql)
         print('Listo!')
@@ -53,6 +58,11 @@ def actualizar_calificacion():
             materia = input('Ingresa el nombre de la materia: ').upper()
             calificacion = int(input('Ingresa tu calificacion: '))
             
+            if materia == 'español':
+                materia = 'ESPAÑOL'
+            else:
+                materia = materia.upper()
+
             sql = f"UPDATE ESTUDIANTES SET {materia} = {calificacion} WHERE NOMBRE_ESTUDIANTE='{nombre}'"
             pointer.execute(sql)
             print('Listo!')
@@ -64,6 +74,11 @@ def actualizar_calificacion():
             materia = input('Ingresa el nombre de la materia: ').upper()
             calificacion = int(input('Ingresa tu calificacion: '))
             
+            if materia == 'español':
+                materia = 'ESPAÑOL'
+            else:
+                materia = materia.upper()
+
             sql = f"UPDATE ESTUDIANTES SET {materia} = {calificacion} WHERE NOMBRE_ESTUDIANTE='{nombre}'"
             pointer.execute(sql)
             print('Listo!')
