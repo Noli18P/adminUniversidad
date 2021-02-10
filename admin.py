@@ -86,6 +86,16 @@ def actualizar_calificacion():
             i = i + 1
 
 
+def eliminar_estudiante():
+    nombre = input('Ingresa tu nombre: ').upper()
+    pointer.execute(f"DELETE FROM ESTUDIANTES WHERE NOMBRE_ESTUDIANTE = '{nombre}'")
+    print('Estudiante eliminado!')
+    conection.commit()
+
+
+def leer_calificaciones():
+    nombre = 
+
 def main():
     print("""
             Seleccione una opcion: 
@@ -103,7 +113,7 @@ def main():
     if opcion == 1:
         registrar_estudiante()
     elif opcion == 2:
-        pass
+        eliminar_estudiante()
     elif opcion == 3:
         actualizar_calificacion()
     elif opcion == 4:
