@@ -1,10 +1,12 @@
 import sqlite3
+import sys
+
 
 conection = sqlite3.connect('UNIVERSIDAD')
 
 pointer = conection.cursor()
 
-#pointer.execute("CREATE TABLE ESTUDIANTES (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOMBRE_ESTUDIANTE VARCHAR(50), EDAD_ESTUDIANTE INTEGER, ESPAÑOL INTEGER, MATEMATICAS INTEGER, CIENCIAS )")
+#pointer.execute("CREATE TABLE ESTUDIANTES (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOMBRE_ESTUDIANTE VARCHAR(50), EDAD_ESTUDIANTE INTEGER, ESPAÑOL INTEGER, MATEMATICAS INTEGER, CIENCIAS INTEGER)")
 
 """
 alumnos = [
@@ -14,9 +16,23 @@ alumnos = [
         ("EDUARDO ENRIQUEZ", 21, 10, 8, 6),
         ("OLIVIA MARTINEZ", 21, 10, 10, 8)
         ]
-"""
 
-#pointer.executemany("INSERT INTO ESTUDIANTES VALUES(NULL,?,?,?,?,?)", alumnos)
+
+pointer.executemany("INSERT INTO ESTUDIANTES VALUES(NULL,?,?,?,?,?)", alumnos)
+conection.commit()"""
+
+def registrar_estudiante():
+    nombre = input('Ingresa tu nombre: ').upper()
+    edad = int(input('Ingresa tu edad: '))
+    
+    datos = [
+            (nombre, edad)
+            ]
+
+    pointer.executemany('INSERT INTO ESTUDIANTES VALUES(NULL,?,?,NULL,NULL,NULL)', datos)
+
+    conection.commit()
+    
 
 
 def main():
@@ -30,6 +46,22 @@ def main():
             5 - Salir
 
             """)
+
+    opcion = int(input())
+    
+    if opcion == 1:
+        registrar_estudiante()
+    elif opcion == 2:
+        pass
+    elif opcion == 3:
+        pass
+    elif opcion == 4:
+        pass
+    elif opcion == 5:
+        sys.exit()
+    else:
+        print('La opcion ingresada no existe, intentalo otra vez')
+        main()
 
 
 if __name__ == '__main__':
