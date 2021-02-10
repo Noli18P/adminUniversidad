@@ -94,7 +94,13 @@ def eliminar_estudiante():
 
 
 def leer_calificaciones():
-    nombre = 
+    nombre = input('Ingresa tu nombre: ').upper()
+    pointer.execute(f"SELECT ESPAÑOL, MATEMATICAS, CIENCIAS FROM ESTUDIANTES WHERE NOMBRE_ESTUDIANTE='{nombre}'")
+    calificacion_lectura = pointer.fetchall()
+    
+    for calificacion in calificacion_lectura:
+        print('Español: ', calificacion[0], ' Matematicas: ', calificacion[1], ' Ciencias: ', calificacion[2])
+
 
 def main():
     print("""
@@ -117,7 +123,7 @@ def main():
     elif opcion == 3:
         actualizar_calificacion()
     elif opcion == 4:
-        pass
+        leer_calificaciones()
     elif opcion == 5:
         sys.exit()
     else:
