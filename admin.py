@@ -32,7 +32,43 @@ def registrar_estudiante():
     pointer.executemany('INSERT INTO ESTUDIANTES VALUES(NULL,?,?,NULL,NULL,NULL)', datos)
 
     conection.commit()
-    
+
+
+def actualizar_calificacion():
+    print('Puedes actualizar varias calificaciones o solo una!!')
+    nombre = input('Ingresa tu nombre: ').upper()
+    opcion = int(input('Ingresa la cantidad de calificaciones que quieres actualizar: '))
+
+    if opcion == 1:
+        materia = input('Ingresa el nombre de la materia: ').upper()
+        calificacion = int(input('Ingresa tu calificacion: '))
+        
+        sql = f"UPDATE ESTUDIANTES SET {materia} = {calificacion} WHERE NOMBRE_ESTUDIANTE='{nombre}'"
+        pointer.execute(sql)
+        print('Listo!')
+        conection.commit()
+    elif opcion == 2:
+        i = 0
+        while i < 2:
+            materia = input('Ingresa el nombre de la materia: ').upper()
+            calificacion = int(input('Ingresa tu calificacion: '))
+            
+            sql = f"UPDATE ESTUDIANTES SET {materia} = {calificacion} WHERE NOMBRE_ESTUDIANTE='{nombre}'"
+            pointer.execute(sql)
+            print('Listo!')
+            conection.commit()
+            i = i + 1
+    elif opcion == 3:
+        i = 0
+        while i < 3:
+            materia = input('Ingresa el nombre de la materia: ').upper()
+            calificacion = int(input('Ingresa tu calificacion: '))
+            
+            sql = f"UPDATE ESTUDIANTES SET {materia} = {calificacion} WHERE NOMBRE_ESTUDIANTE='{nombre}'"
+            pointer.execute(sql)
+            print('Listo!')
+            conection.commit()
+            i = i + 1
 
 
 def main():
@@ -54,7 +90,7 @@ def main():
     elif opcion == 2:
         pass
     elif opcion == 3:
-        pass
+        actualizar_calificacion()
     elif opcion == 4:
         pass
     elif opcion == 5:
